@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.29.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
@@ -30,6 +31,23 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MeterReaderLib\MeterReaderLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Protos" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\MeterReader.proto" />
+    <Protobuf Include="Protos\MeterReader.proto">
+      <GrpcServices>Server</GrpcServices>
+      <Access>Public</Access>
+      <ProtoCompile>True</ProtoCompile>
+      <ProtoRoot></ProtoRoot>
+      <CompileOutputs>True</CompileOutputs>
+      <OutputDir>obj\Debug\netcoreapp3.0\</OutputDir>
+      <Generator>MSBuild:Compile</Generator>
+    </Protobuf>
   </ItemGroup>
 
 </Project>
